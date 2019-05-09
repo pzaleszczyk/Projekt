@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<kebabownia>
+	<lokal>
+		<adres>
+			<miejscowosc> Wejherowo</miejscowosc>
+			<ulica>Magiczna</ulica>
+			<numer_budynku>205</numer_budynku>
+		</adres>
+		<pracownicy>
+			<pracownik plec="M">
+				<dane>
+					<imie>Andrzej</imie>
+					<nazwisko>Kebabowski</nazwisko>
+					<pozycja>Dostawca</pozycja>
+				</dane>
+			</pracownik>
+			<pracownik plec="K">
+				<dane>
+					<imie>Aneta</imie>
+					<nazwisko>Kebska</nazwisko>
+					<pozycja>Kebabmaker</pozycja>
+				</dane>
+			</pracownik>
+			<pracownik plec="M">
+				<dane>
+					<imie>John</imie>
+					<nazwisko>Kebaper</nazwisko>
+					<pozycja>Manager</pozycja>
+				</dane>
+			</pracownik>
+		</pracownicy>
+	</lokal>
+	<produkty>
+		<produkt>
+			<nazwa>Kebab miesny</nazwa>
+			<cena waluta="pln">20</cena>
+			<skladniki>
+				<skladnik>
+					<nazwa>Mięso</nazwa>
+					<ilosc jednostka="g">330</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Chleb</nazwa>
+					<ilosc jednostka="g">120</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Sos</nazwa>
+					<ilosc jednostka="ml">30</ilosc>
+				</skladnik>
+			</skladniki>
+		</produkt>
+		<produkt>
+			<nazwa>Kebab maly</nazwa>
+			<cena waluta="pln">15</cena>
+			<skladniki>
+				<skladnik>
+					<nazwa>Mięso</nazwa>
+					<ilosc jednostka="g">200</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Chleb</nazwa>
+					<ilosc jednostka="g">90</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Sos</nazwa>
+					<ilosc jednostka="ml">30</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Surówki</nazwa>
+					<ilosc jednostka="g">90</ilosc>
+				</skladnik>
+			</skladniki>
+		</produkt>
+		<produkt>
+			<nazwa>Kebab gigant</nazwa>
+			<cena waluta="usd">50</cena>
+			<skladniki>
+				<skladnik>
+					<nazwa>Mięso</nazwa>
+					<ilosc jednostka="kg">2</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Chleb</nazwa>
+					<ilosc jednostka="kg">1</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Sos</nazwa>
+					<ilosc jednostka="l">0.5</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Surówki</nazwa>
+					<ilosc jednostka="g">500</ilosc>
+				</skladnik>
+			</skladniki>
+		</produkt>
+
+		<sosy>
+			<sos>
+				<nazwa>Sos czosnkowy</nazwa>
+				<ostrosc>Łagodny</ostrosc>
+			</sos>
+			<sos>
+				<nazwa>Sos pomidorowy</nazwa>
+				<ostrosc>Łagodny</ostrosc>
+			</sos>
+			<sos>
+				<nazwa>Sos meksykański</nazwa>
+				<ostrosc>Pikatny</ostrosc>
+			</sos>
+			<sos>
+				<nazwa>Sos hot</nazwa>
+				<ostrosc>Pikatny+</ostrosc>
+			</sos>
+		</sosy>
+		<miesa>
+			<mieso>
+				<rodzaj>Wieprzowe</rodzaj>
+			</mieso>
+			<mieso>
+				<rodzaj>Baranina</rodzaj>
+			</mieso>
+			<mieso>
+				<rodzaj>Wołowe</rodzaj>
+			</mieso>
+			<mieso>
+				<rodzaj>Kurczak</rodzaj>
+			</mieso>
+		</miesa>
+	</produkty>
+</kebabownia>
