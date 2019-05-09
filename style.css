@@ -151,10 +151,15 @@ sos{
 	background-color: white;
 }
 
-sos[ostrosc="Łagodny"]:hover{
+sos ostrosc[level="2"]:hover{
 	background-color:red;
 }
-
+sos ostrosc[level="1"]:hover{
+	background-color:orange;
+}
+sos ostrosc[level="0"]:hover{
+	background-color:lime;
+}
 
 miesa:before {
 	display: block;
