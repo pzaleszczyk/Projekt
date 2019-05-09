@@ -98,19 +98,19 @@
 		<sosy>
 			<sos>
 				<nazwa>Sos czosnkowy</nazwa>
-				<ostrosc>Łagodny</ostrosc>
+				<ostrosc level="0">Łagodny</ostrosc>
 			</sos>
 			<sos>
 				<nazwa>Sos pomidorowy</nazwa>
-				<ostrosc>Łagodny</ostrosc>
+				<ostrosc level="0">Łagodny</ostrosc>
 			</sos>
 			<sos>
 				<nazwa>Sos meksykański</nazwa>
-				<ostrosc>Pikatny</ostrosc>
+				<ostrosc level="1">Pikatny</ostrosc>
 			</sos>
 			<sos>
 				<nazwa>Sos hot</nazwa>
-				<ostrosc>Pikatny+</ostrosc>
+				<ostrosc level="2">Pikatny+</ostrosc>
 			</sos>
 		</sosy>
 		<miesa>
