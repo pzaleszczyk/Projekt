@@ -1,12 +1,14 @@
 <!ENTITY % dane "imie, nazwisko, pozycja">
 
-<!ELEMENT kebabownia  (lokal+, produkty+)>
+<!ELEMENT kebabownia (lokal+, produkty+)>
 
-<!ELEMENT lokal 	(adres, pracownicy+)>
+
+<!ELEMENT lokal 	(adres, waluty+, pracownicy+)>
 <!ELEMENT produkty 	(produkt+, sosy+, miesa+)>
 
+<!ELEMENT waluty	(waluta+)>
 <!ELEMENT adres		(miejscowosc, ulica, numer_budynku)>
-<!ELEMENT pracownicy(pracownik+)>
+<!ELEMENT pracownicy (pracownik+)>
 <!ELEMENT produkt	(nazwa, cena, skladniki)>
 <!ELEMENT sosy		(sos*)>
 <!ELEMENT miesa		(mieso+)>
@@ -20,8 +22,11 @@
 <!ATTLIST skladnik typ CDATA #IMPLIED>
 <!ELEMENT skladnik  (nazwa, ilosc)>
 
-<!ATTLIST sos level ID #REQUIRED>
-<!ATTLIST skladnik level IDREF #IMPLIED>
+<!ATTLIST cena waluta IDREF #REQUIRED>
+<!ATTLIST waluta id ID #IMPLIED>
+
+<!ATTLIST ilosc jednostka CDATA #REQUIRED>
+<!ATTLIST ostrosc level CDATA #REQUIRED>
 
 <!ELEMENT miejscowosc		(#PCDATA)>
 <!ELEMENT ulica				(#PCDATA)>
@@ -34,3 +39,4 @@
 <!ELEMENT cena				(#PCDATA)>
 <!ELEMENT rodzaj			(#PCDATA)>
 <!ELEMENT ostrosc			(#PCDATA)>
+<!ELEMENT waluta			(#PCDATA)>
