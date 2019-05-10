@@ -5,7 +5,7 @@
 <!ELEMENT lokal 	(adres, pracownicy+)>
 <!ELEMENT produkty 	(produkt+, sosy+, miesa+)>
 
-<!ELEMENT adres		(miejscowosc, ulica, nr_budynku)>
+<!ELEMENT adres		(miejscowosc, ulica, numer_budynku)>
 <!ELEMENT pracownicy(pracownik+)>
 <!ELEMENT produkt	(nazwa, cena, skladniki)>
 <!ELEMENT sosy		(sos*)>
@@ -25,7 +25,7 @@
 
 <!ELEMENT miejscowosc		(#PCDATA)>
 <!ELEMENT ulica				(#PCDATA)>
-<!ELEMENT number_budynku	(#PCDATA)>
+<!ELEMENT numer_budynku	(#PCDATA)>
 <!ELEMENT imie				(#PCDATA)>
 <!ELEMENT nazwisko			(#PCDATA)>
 <!ELEMENT pozycja			(#PCDATA)>
