@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="style.css"?>
+<!DOCTYPE kebabownia SYSTEM "Kebabownia.dtd">
+
 <kebabownia>
 	<lokal>
 		<adres>
@@ -7,6 +9,10 @@
 			<ulica>Magiczna</ulica>
 			<numer_budynku>205</numer_budynku>
 		</adres>
+		<waluty>
+			<waluta id="pln">zł</waluta>
+			<waluta id="usd">$</waluta>
+		</waluty>
 		<pracownicy>
 			<pracownik plec="M">
 				<imie>Andrzej</imie>
@@ -78,7 +84,7 @@
 					<nazwa>Chleb</nazwa>
 					<ilosc jednostka="g">110</ilosc>
 				</skladnik>
-				<skladnik typ="sos" level="2">
+				<skladnik>
 					<nazwa>Sos</nazwa>
 					<ilosc jednostka="ml">50</ilosc>
 				</skladnik>
