@@ -11,7 +11,7 @@
 <!ELEMENT sosy		(sos*)>
 <!ELEMENT miesa		(mieso+)>
 
-<!ELEMENT pracownik (dane)>
+<!ELEMENT pracownik (%dane;)>
 <!ELEMENT sos       (nazwa, ostrosc)>
 <!ELEMENT mieso     (rodzaj)>
 <!ELEMENT skladniki (skladnik+)>
