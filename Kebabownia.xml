@@ -67,6 +67,28 @@
 			</skladniki>
 		</produkt>
 		<produkt>
+			<nazwa>Kebab Chili</nazwa>
+			<cena waluta="pln">18</cena>
+			<skladniki>
+				<skladnik>
+					<nazwa>Mięso</nazwa>
+					<ilosc jednostka="g">220</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Chleb</nazwa>
+					<ilosc jednostka="g">110</ilosc>
+				</skladnik>
+				<skladnik typ="sos" level="2">
+					<nazwa>Sos</nazwa>
+					<ilosc jednostka="ml">50</ilosc>
+				</skladnik>
+				<skladnik>
+					<nazwa>Surówki</nazwa>
+					<ilosc jednostka="g">80</ilosc>
+				</skladnik>
+			</skladniki>
+		</produkt>
+		<produkt>
 			<nazwa>Kebab gigant</nazwa>
 			<cena waluta="usd">50</cena>
 			<skladniki>
