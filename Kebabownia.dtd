@@ -17,8 +17,11 @@
 <!ELEMENT mieso     (rodzaj)>
 <!ELEMENT skladniki (skladnik+)>
 
+<!ATTLIST skladnik typ CDATA #IMPLIED>
 <!ELEMENT skladnik  (nazwa, ilosc)>
 
+<!ATTLIST sos level ID #REQUIRED>
+<!ATTLIST skladnik level IDREF #IMPLIED>
 
 <!ELEMENT miejscowosc		(#PCDATA)>
 <!ELEMENT ulica				(#PCDATA)>
