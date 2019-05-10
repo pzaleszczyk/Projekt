@@ -11,6 +11,7 @@
 <!ELEMENT sosy		(sos*)>
 <!ELEMENT miesa		(mieso+)>
 
+<!ATTLIST pracownik plec (K|M) #REQUIRED>
 <!ELEMENT pracownik (%dane;)>
 <!ELEMENT sos       (nazwa, ostrosc)>
 <!ELEMENT mieso     (rodzaj)>
