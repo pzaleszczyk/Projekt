@@ -1,0 +1,32 @@
+<!ENTITY % dane "imie, nazwisko, pozycja">
+
+<!ELEMENT uczelnia  (lokal+, produkty+)>
+
+<!ELEMENT lokal 	(adres, pracownicy+)>
+<!ELEMENT produkty 	(produkt+, sosy+, miesa+)>
+
+<!ELEMENT adres		(miejscowosc, ulica, nr_budynku)>
+<!ELEMENT pracownicy(pracownik+)>
+<!ELEMENT produkt	(nazwa, cena, skladniki)>
+<!ELEMENT sosy		(sos*)>
+<!ELEMENT miesa		(mieso+)>
+
+<!ELEMENT pracownik (dane)>
+<!ELEMENT sos       (nazwa, ostrosc)>
+<!ELEMENT mieso     (rodzaj)>
+<!ELEMENT skladniki (skladnik+)>
+
+<!ELEMENT skladnik  (nazwa, ilosc)>
+
+
+<!ELEMENT miejscowosc		(#PCDATA)>
+<!ELEMENT ulica				(#PCDATA)>
+<!ELEMENT number_budynku	(#PCDATA)>
+<!ELEMENT imie				(#PCDATA)>
+<!ELEMENT nazwisko			(#PCDATA)>
+<!ELEMENT pozycja			(#PCDATA)>
+<!ELEMENT nazwa				(#PCDATA)>
+<!ELEMENT ilosc				(#PCDATA)>	
+<!ELEMENT cena				(#PCDATA)>
+<!ELEMENT rodzaj			(#PCDATA)>
+<!ELEMENT ostrosc			(#PCDATA)>
