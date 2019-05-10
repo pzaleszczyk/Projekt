@@ -9,25 +9,19 @@
 		</adres>
 		<pracownicy>
 			<pracownik plec="M">
-				<dane>
-					<imie>Andrzej</imie>
-					<nazwisko>Kebabowski</nazwisko>
-					<pozycja>Dostawca</pozycja>
-				</dane>
+				<imie>Andrzej</imie>
+				<nazwisko>Kebabowski</nazwisko>
+				<pozycja>Dostawca</pozycja>
 			</pracownik>
 			<pracownik plec="K">
-				<dane>
-					<imie>Aneta</imie>
-					<nazwisko>Kebska</nazwisko>
-					<pozycja>Kebabmaker</pozycja>
-				</dane>
+				<imie>Aneta</imie>
+				<nazwisko>Kebska</nazwisko>
+				<pozycja>Kebabmaker</pozycja>
 			</pracownik>
 			<pracownik plec="M">
-				<dane>
-					<imie>John</imie>
-					<nazwisko>Kebaper</nazwisko>
-					<pozycja>Manager</pozycja>
-				</dane>
+				<imie>John</imie>
+				<nazwisko>Kebaper</nazwisko>
+				<pozycja>Manager</pozycja>
 			</pracownik>
 		</pracownicy>
 	</lokal>
