@@ -30,6 +30,15 @@ adres:before{
 	padding: .1em .25em;
 	background-color: #0099ff;
 }
+miejscowosc:before{
+	content: "Miejscowosc: ";
+}
+ulica:before{
+	content: "Ulica: ";
+}
+numer_budynku:before{
+	content: "Numer budynku: ";
+}
 adres {
 	margin-top: 1em;
 	padding: 0px 1em;
@@ -37,6 +46,32 @@ adres {
 	background-color: aqua;
 	border: 2px solid #0099ff;
 	margin-bottom: 1em;
+  }
+
+waluty:before{
+	
+	display: block;
+	width: 6em;
+	font-weight: bold;
+	font-size: 100%;
+	content: "Płatność w:";
+	margin: -.75em 0px .25em -.25em;
+	padding: .1em .25em;
+	background-color: lime;
+}
+waluty {
+	margin-top: 1em;
+	padding: 0px 1em;
+	display: block;
+	background-color: aqua;
+	border: 2px solid lime;
+	margin-bottom: 1em;
+  }
+  waluta:before{
+	  content:"- ";
+  }
+  waluta{
+	  display:block;
   }
 
 pracownicy:before {
