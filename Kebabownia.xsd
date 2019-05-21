@@ -1,0 +1,151 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="kebabownia" type="kebabowniaType">
+  
+	<xs:keyref name="klucz02" refer="klucz01">
+		<xs:selector xpath="./produkty/produkt/cena" />
+		<xs:field xpath="@waluta" />
+	</xs:keyref>
+	
+	<xs:key name="klucz01">
+		<xs:selector xpath="./lokal/waluty/waluta"/>
+		<xs:field xpath="@id" />
+	</xs:key>
+	
+  </xs:element>
+  
+  <xs:complexType name="adresType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="miejscowosc"/>
+      <xs:element type="xs:string" name="ulica"/>
+      <xs:element type="xs:short" name="numer_budynku"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="walutaType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="walutyType">
+    <xs:sequence>
+      <xs:element type="walutaType" name="waluta" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="imieType">
+  	<xs:restriction base="xs:string">
+  		<xs:pattern value="[A-Z][a-z]*"/>
+  	</xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="pracownikType">
+    <xs:sequence>
+      <xs:element type="imieType" name="imie"/>
+      <xs:element type="imieType" name="nazwisko"/>
+      <xs:element type="xs:string" name="pozycja"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="plec" use="optional"/>
+  </xs:complexType>
+  
+  <xs:complexType name="pracownicyType">
+    <xs:sequence>
+      <xs:element type="pracownikType" name="pracownik" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="lokalType">
+    <xs:sequence>
+      <xs:element type="adresType" name="adres"/>
+      <xs:element type="walutyType" name="waluty"/>
+      <xs:element type="pracownicyType" name="pracownicy"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cenaType">
+    <xs:simpleContent>
+      <xs:extension base="xs:byte">
+        <xs:attribute type="xs:string" name="waluta" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="iloscType">
+    <xs:simpleContent>
+      <xs:extension base="xs:float">
+        <xs:attribute type="xs:string" name="jednostka" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="skladnikType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nazwa"/>
+      <xs:element type="iloscType" name="ilosc"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="skladnikiType">
+    <xs:sequence>
+      <xs:element type="skladnikType" name="skladnik" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="produktType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nazwa"/>
+      <xs:element type="cenaType" name="cena"/>
+      <xs:element type="skladnikiType" name="skladniki"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ostroscType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:byte" name="level" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="sosType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nazwa"/>
+      <xs:element type="ostroscType" name="ostrosc"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="sosyType">
+    <xs:sequence>
+      <xs:element type="sosType" name="sos" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="miesoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="rodzaj"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="miesaType">
+    <xs:sequence>
+      <xs:element type="miesoType" name="mieso" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="produktyType">
+    <xs:sequence>
+      <xs:element type="produktType" name="produkt" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="sosyType" name="sosy"/>
+      <xs:element type="miesaType" name="miesa"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="kebabowniaType">
+    <xs:sequence>
+      <xs:element type="lokalType" name="lokal"/>
+      <xs:element type="produktyType" name="produkty"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
