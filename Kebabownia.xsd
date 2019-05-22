@@ -67,7 +67,7 @@
   <xs:complexType name="cenaType">
     <xs:simpleContent>
       <xs:extension base="xs:byte">
-        <xs:attribute type="xs:string" name="waluta" use="optional"/>
+        <xs:attribute type="xs:string" name="waluta" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -89,7 +89,7 @@
   
   <xs:complexType name="skladnikiType">
     <xs:sequence>
-      <xs:element type="skladnikType" name="skladnik" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="skladnikType" name="skladnik" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -144,7 +144,7 @@
   
   <xs:complexType name="kebabowniaType">
     <xs:sequence>
-      <xs:element type="lokalType" name="lokal"/>
+      <xs:element type="lokalType" name="lokal" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element type="produktyType" name="produkty"/>
     </xs:sequence>
   </xs:complexType>
