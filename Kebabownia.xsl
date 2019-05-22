@@ -4,8 +4,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="/">
   <html>
   <body>
-    <h2>Kababownia!</h2>
-    <h1>Pracownicy:</h1>
+    <h1>Kababownia!</h1>
+    <h3>Pracownicy:</h3>
     <table>
         <tr>
             <td>Imie</td>
@@ -31,21 +31,27 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     </table>
 
    
-    <h1>Produkty:</h1>
+    <h3>Produkty:</h3>
     <table>
         <tr>
             <td><b>Nazwa</b></td>
             <td>Cena</td>
             <td>Skladniki</td>
         </tr>
-    <xsl:for-each select="kebabownia/lokal/pracownicy/pracownik">
+    <xsl:for-each select="kebabownia/produkty/produkt">
         <tr style="color:brown">
             <td><b><xsl:value-of select="nazwa"/></b></td>
             <td><u><xsl:value-of select="cena"/></u></td>
             <td>
-                <xsl:value-of select="skladniki/skladnik/nazwa"/> 
-                <xsl:value-of select="skladniki/skladnik/ilosc"/> 
-                <xsl:value-of select="skladniki/skladnik/nazwa/attribute::jednostka"/>
+            <ol>
+                <xsl:for-each select="skladniki/skladnik">
+                    <li>
+                        <xsl:value-of select="nazwa"/>&#160;
+                        <xsl:value-of select="ilosc"/>&#160;
+                        <xsl:value-of select="ilosc/@jednostka"/>
+                    </li>
+                </xsl:for-each>
+            </ol>
             </td>
         </tr>
     </xsl:for-each>
