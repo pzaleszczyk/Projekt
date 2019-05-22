@@ -52,7 +52,7 @@
   
   <xs:complexType name="pracownicyType">
     <xs:sequence>
-      <xs:element type="pracownikType" name="pracownik" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="pracownikType" name="pracownik" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -72,6 +72,16 @@
     </xs:simpleContent>
   </xs:complexType>
   
+  <xs:simpleType name="jednostkaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kg" />
+      <xs:enumeration value="g" />
+      <xs:enumeration value="dag" />
+      <xs:enumeration value="ml" />
+      <xs:enumeration value="l" />
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="iloscType">
     <xs:simpleContent>
       <xs:extension base="xs:float">
@@ -104,7 +114,7 @@
   <xs:complexType name="ostroscType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute type="xs:byte" name="level" use="optional"/>
+        <xs:attribute type="xs:byte" name="level" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -136,9 +146,9 @@
   
   <xs:complexType name="produktyType">
     <xs:sequence>
-      <xs:element type="produktType" name="produkt" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element type="sosyType" name="sosy"/>
-      <xs:element type="miesaType" name="miesa"/>
+      <xs:element type="produktType" name="produkt" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element type="sosyType" name="sosy" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element type="miesaType" name="miesa" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   

@@ -25,7 +25,7 @@
 <!ATTLIST cena waluta IDREF #REQUIRED>
 <!ATTLIST waluta id ID #IMPLIED>
 
-<!ATTLIST ilosc jednostka CDATA #REQUIRED>
+<!ATTLIST ilosc jednostka (kg|g|dag|ml|l) #REQUIRED>
 <!ATTLIST ostrosc level CDATA #REQUIRED>
 
 <!ELEMENT miejscowosc		(#PCDATA)>
