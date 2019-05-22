@@ -1,6 +1,6 @@
 <!ENTITY % dane "imie, nazwisko, pozycja">
 
-<!ELEMENT kebabownia (lokal+, produkty+)>
+<!ELEMENT kebabownia (lokal+, produkty)>
 
 
 <!ELEMENT lokal 	(adres, waluty+, pracownicy+)>
