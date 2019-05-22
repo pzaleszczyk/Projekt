@@ -20,7 +20,7 @@
 <!ELEMENT skladniki (skladnik+)>
 
 <!ATTLIST skladnik typ CDATA #IMPLIED>
-<!ELEMENT skladnik  (nazwa, ilosc)>
+<!ELEMENT skladnik  ((ilosc, nazwa)|(nazwa, ilosc))>
 
 <!ATTLIST cena waluta IDREF #REQUIRED>
 <!ATTLIST waluta id ID #IMPLIED>

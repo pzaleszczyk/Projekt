@@ -99,8 +99,8 @@
 			<cena waluta="usd">50</cena>
 			<skladniki>
 				<skladnik>
-					<nazwa>Mięso</nazwa>
 					<ilosc jednostka="kg">2</ilosc>
+					<nazwa>Mięso</nazwa>
 				</skladnik>
 				<skladnik>
 					<nazwa>Chleb</nazwa>

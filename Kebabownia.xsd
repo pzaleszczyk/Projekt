@@ -1,12 +1,12 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="kebabownia" type="kebabowniaType">
   
-	<xs:keyref name="klucz02" refer="klucz01">
+	<xs:keyref name="moneyref" refer="moneykey">
 		<xs:selector xpath="./produkty/produkt/cena" />
 		<xs:field xpath="@waluta" />
 	</xs:keyref>
 	
-	<xs:key name="klucz01">
+	<xs:key name="moneykey">
 		<xs:selector xpath="./lokal/waluty/waluta"/>
 		<xs:field xpath="@id" />
 	</xs:key>
@@ -31,7 +31,7 @@
   
   <xs:complexType name="walutyType">
     <xs:sequence>
-      <xs:element type="walutaType" name="waluta" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="walutaType" name="waluta" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -91,10 +91,10 @@
   </xs:complexType>
   
   <xs:complexType name="skladnikType">
-    <xs:sequence>
+    <xs:all>
       <xs:element type="xs:string" name="nazwa"/>
       <xs:element type="iloscType" name="ilosc"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   
   <xs:complexType name="skladnikiType">
@@ -128,7 +128,7 @@
   
   <xs:complexType name="sosyType">
     <xs:sequence>
-      <xs:element type="sosType" name="sos" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="sosType" name="sos" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -140,7 +140,7 @@
   
   <xs:complexType name="miesaType">
     <xs:sequence>
-      <xs:element type="miesoType" name="mieso" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="miesoType" name="mieso" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   
