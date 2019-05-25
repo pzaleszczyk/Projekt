@@ -18,7 +18,14 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.xml.sax.SAXException;
-
+class Produkt{
+	String nazwa, cena;
+	int ilosc;
+	String[] SkladNazwa;
+	String[] SkladWaga;
+	String jednostka;
+	String waluta;
+}
 public class DOMPROJEKT {
 	File xmlFile = new File("Kebabownia.xml");
 	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -118,20 +125,105 @@ public class DOMPROJEKT {
 		}
 	}
 
-	void updateAction() throws ParserConfigurationException, SAXException, IOException {
+	void updateAction() throws ParserConfigurationException, SAXException, IOException, TransformerException {
 		chooseKebab();
-		chooseField();
-		
 		DocumentBuilder dBuilder = factory.newDocumentBuilder();
 		Document doc = dBuilder.parse(xmlFile);
 		doc.getDocumentElement().normalize();
+		
+		Element kebabownia = doc.getDocumentElement();
+		NodeList nl = kebabownia.getElementsByTagName("produkt");
+		Element ee = (Element) nl.item(Integer.parseInt(id)-1);
+		//do ee przypisujemy produkt o podanym id
+		
+		
+		System.out.print(ee.getElementsByTagName("nazwa").item(0).getTextContent()+" ");
+		System.out.print(ee.getElementsByTagName("cena").item(0).getTextContent());
+		System.out.println(ee.getElementsByTagName("cena").item(0).getAttributes().item(0).getTextContent());
+		System.out.println("Podaj nowe wartosci. (nazwa,cena,waluta). Puste pola pozostawiaja je niezmienione.");
+		Scanner keyboard = new Scanner(System.in);
+		String in1 = keyboard.nextLine();
+		if(!in1.isEmpty()) ee.getElementsByTagName("nazwa").item(0).setTextContent(in1);
+		in1 = keyboard.nextLine();
+		if(!in1.isEmpty()) ee.getElementsByTagName("cena").item(0).setTextContent(in1);
+		in1 = keyboard.nextLine();
+		if(!in1.isEmpty()) ee.getElementsByTagName("cena").item(0).getAttributes().item(0).setNodeValue(in1);
 
-		System.out.println(doc.getDocumentElement().getNodeName());
+	
+		
+		//robimy liste skladnikow
+		NodeList skladList = ee.getElementsByTagName("skladnik");
+		//iteracja przez skladniki
+		for(int i=0 ; i < skladList.getLength(); i++) {
+			Element skladEle = (Element) skladList.item(i);
+			System.out.print(skladEle.getElementsByTagName("nazwa").item(0).getTextContent()+" ");
+			System.out.print(skladEle.getElementsByTagName("ilosc").item(0).getTextContent());
+			System.out.println(skladEle.getElementsByTagName("ilosc").item(0).getAttributes().item(0).getTextContent());
+			System.out.println("Podaj nowe wartosci. (nazwa, ilosc, jednostka). Puste pola pozostawiaja je niezmienione.");
+			in1 = keyboard.nextLine();
+			if(!in1.isEmpty()) skladEle.getElementsByTagName("nazwa").item(0).setTextContent(in1);
+			in1 = keyboard.nextLine();
+			if(!in1.isEmpty()) skladEle.getElementsByTagName("ilosc").item(0).setTextContent(in1);
+			in1 = keyboard.nextLine();
+			if(!in1.isEmpty()) skladEle.getElementsByTagName("ilosc").item(0).getAttributes().item(0).setNodeValue(in1);
+		}	
+		
+		
 
-		NodeList nList = doc.getElementsByTagName("produkt");
+		// Write to file
+		TransformerFactory tff = TransformerFactory.newInstance();
+		Transformer tf = tff.newTransformer();
+		tf.setOutputProperty(OutputKeys.INDENT, "yes");
+		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+		tf.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC,"yes");
+		DOMSource ds = new DOMSource(doc);
+		StreamResult sr = new StreamResult("KebabUpdate.xml");
+		tf.transform(ds, sr);
+	}
+
+	void printId() throws ParserConfigurationException, SAXException, IOException {
+		chooseKebab();
+		DocumentBuilder dBuilder = factory.newDocumentBuilder();
+		Document doc = dBuilder.parse(xmlFile);
+		doc.getDocumentElement().normalize();
+		
+		Element kebabownia = doc.getDocumentElement();
+		NodeList nl = kebabownia.getElementsByTagName("produkt");
+		Element ee = (Element) nl.item(Integer.parseInt(id)-1);
+		//do ee przypisujemy produkt o podanym id
+		
+		System.out.print(ee.getElementsByTagName("nazwa").item(0).getTextContent()+" ");
+		System.out.print(ee.getElementsByTagName("cena").item(0).getTextContent());
+		System.out.println(ee.getElementsByTagName("cena").item(0).getAttributes().item(0).getTextContent());
+		
+		//robimy liste skladnikow
+		NodeList skladList = ee.getElementsByTagName("skladnik");
+		//iteracja przez skladniki
+		for(int i=0 ; i < skladList.getLength(); i++) {
+			Element skladEle = (Element) skladList.item(i);
+			System.out.print(skladEle.getElementsByTagName("nazwa").item(0).getTextContent()+" ");
+			System.out.print(skladEle.getElementsByTagName("ilosc").item(0).getTextContent());
+			System.out.println(skladEle.getElementsByTagName("ilosc").item(0).getAttributes().item(0).getTextContent());
+		}	
 	}
 
 	void insertAction() throws ParserConfigurationException, SAXException, IOException, TransformerException {
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Podaj nazwe, cene[pln], ilosc skladnikow");
+		String innazwa = keyboard.nextLine();
+		String incena = keyboard.nextLine();
+		int inilosc = Integer.parseInt(keyboard.nextLine());
+		System.out.println("Podaj "+inilosc+" skladnikow.");
+		String[] skladnikiNazwa = new String[inilosc];
+		String[] skladnikiIlosc = new String[inilosc];
+		for(int o=0; o<inilosc; o++) {
+			System.out.println("Nazwa:");
+			skladnikiNazwa[o] = keyboard.nextLine();
+			System.out.println("Ilosc[g]:");
+			skladnikiIlosc[o] = keyboard.nextLine();
+		}
+		
+		
 		DocumentBuilder dBuilder = factory.newDocumentBuilder();
 		Document doc = dBuilder.parse(xmlFile);
 		doc.getDocumentElement().normalize();
@@ -154,31 +246,20 @@ public class DOMPROJEKT {
 		//Skladniki
 			Element skladniki = doc.createElement("skladniki");
 		/////////////////////FOR NA SKLADNIKI///////////////////////////////
-		//Tworzymy nowy skladnik
-			Element skladnik = doc.createElement("skladnik");
-			//Nazwa
-			Element nazwaS = doc.createElement("nazwa");
-			nazwaS.appendChild(doc.createTextNode("Test3"));
-			skladnik.appendChild(nazwaS);
-			//Waga
-			Element waga = doc.createElement("waga");
-			waga.appendChild(doc.createTextNode("Test4"));
-			waga.setAttribute("jednostka", "g");
-			skladnik.appendChild(waga);
-			skladniki.appendChild(skladnik);
-		//Tworzymy nowy skladnik
-			skladnik = doc.createElement("skladnik");
-			//Nazwa
-			nazwaS = doc.createElement("nazwa");
-			nazwaS.appendChild(doc.createTextNode("Test5"));
-			skladnik.appendChild(nazwaS);
-			//Waga
-			waga = doc.createElement("waga");
-			waga.appendChild(doc.createTextNode("Test6"));
-			waga.setAttribute("jednostka", "kg");
-			skladnik.appendChild(waga);
-			skladniki.appendChild(skladnik);
-		///////////////////////////////////////////////////////////////////////
+			Element skladnik,nazwaS,waga;
+			for(int m=0; m<inilosc; m++) {
+				skladnik = doc.createElement("skladnik");
+				//Nazwa
+				nazwaS = doc.createElement("nazwa");
+				nazwaS.appendChild(doc.createTextNode(skladnikiNazwa[m]));
+				skladnik.appendChild(nazwaS);
+				//Ilosc
+				waga = doc.createElement("ilosc");
+				waga.appendChild(doc.createTextNode(skladnikiIlosc[m]));
+				waga.setAttribute("jednostka", "g");
+				skladnik.appendChild(waga);
+				skladniki.appendChild(skladnik);
+			}
 			produkt.appendChild(skladniki);
 			
 
@@ -227,6 +308,7 @@ public class DOMPROJEKT {
 		DOMPROJEKT a = new DOMPROJEKT();
 		a.print("Kebabownia.xml");
 		a.chooseAction();
-		a.print("Kebab.xml");
+		//a.print("Kebab.xml");
+		//sort //
 	} 
 }
