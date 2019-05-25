@@ -9,6 +9,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.xml.sax.SAXException;
 
 public class DOMPROJEKT {
@@ -19,7 +27,9 @@ public class DOMPROJEKT {
 	String id;
 	String field;
 
-	void print() throws SAXException, IOException, ParserConfigurationException {
+	void print(String filename) throws SAXException, IOException, ParserConfigurationException {
+		xmlFile = new File(filename);
+		
 		DocumentBuilder dBuilder = factory.newDocumentBuilder();
 		Document doc = dBuilder.parse(xmlFile);
 
@@ -63,7 +73,8 @@ public class DOMPROJEKT {
 			}
 		}
 	}
-	void chooseAction() throws SAXException, IOException, ParserConfigurationException {
+
+	void chooseAction() throws SAXException, IOException, ParserConfigurationException, TransformerException {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Choose action (update,insert,delete,sort)");
 		String input = keyboard.nextLine();
@@ -76,12 +87,14 @@ public class DOMPROJEKT {
 		chooseAction();
 		}
 	}
+	
 	void chooseKebab() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Name kebab (number) to change it");
 		id = keyboard.nextLine();
 		
 	}
+	
 	void chooseField() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Name field (nazwa,cena,skladniki) to change it");
@@ -93,6 +106,7 @@ public class DOMPROJEKT {
 		default: chooseField();
 		}
 	}
+
 	void chooseSkladnik() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Name field (nazwaS, ilosc) to change it");
@@ -117,22 +131,67 @@ public class DOMPROJEKT {
 		NodeList nList = doc.getElementsByTagName("produkt");
 	}
 
-	void insertAction() throws ParserConfigurationException, SAXException, IOException {
-	
-		DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
-	    DocumentBuilder domBuilder = domFactory.newDocumentBuilder();
+	void insertAction() throws ParserConfigurationException, SAXException, IOException, TransformerException {
+		DocumentBuilder dBuilder = factory.newDocumentBuilder();
+		Document doc = dBuilder.parse(xmlFile);
+		doc.getDocumentElement().normalize();
+		
+		Element kebabownia = doc.getDocumentElement();
+		NodeList nl = kebabownia.getElementsByTagName("produkty");
+		Element produkty = (Element) nl.item(0);
+		
+		//Tworzymy nowy produkt
+			Element produkt = doc.createElement("produkt");
+		//Nazwa
+			Element nazwa = doc.createElement("nazwa");
+			nazwa.appendChild(doc.createTextNode("Test1"));
+			produkt.appendChild(nazwa);
+		//Cena
+			Element cena = doc.createElement("cena");
+			cena.appendChild(doc.createTextNode("Test2"));
+			cena.setAttribute("waluta", "pln");
+			produkt.appendChild(cena);
+		//Skladniki
+			Element skladniki = doc.createElement("skladniki");
+		/////////////////////FOR NA SKLADNIKI///////////////////////////////
+		//Tworzymy nowy skladnik
+			Element skladnik = doc.createElement("skladnik");
+			//Nazwa
+			Element nazwaS = doc.createElement("nazwa");
+			nazwaS.appendChild(doc.createTextNode("Test3"));
+			skladnik.appendChild(nazwaS);
+			//Waga
+			Element waga = doc.createElement("waga");
+			waga.appendChild(doc.createTextNode("Test4"));
+			waga.setAttribute("jednostka", "g");
+			skladnik.appendChild(waga);
+			skladniki.appendChild(skladnik);
+		//Tworzymy nowy skladnik
+			skladnik = doc.createElement("skladnik");
+			//Nazwa
+			nazwaS = doc.createElement("nazwa");
+			nazwaS.appendChild(doc.createTextNode("Test5"));
+			skladnik.appendChild(nazwaS);
+			//Waga
+			waga = doc.createElement("waga");
+			waga.appendChild(doc.createTextNode("Test6"));
+			waga.setAttribute("jednostka", "kg");
+			skladnik.appendChild(waga);
+			skladniki.appendChild(skladnik);
+		///////////////////////////////////////////////////////////////////////
+			produkt.appendChild(skladniki);
+			
 
-	    Document newDoc = domBuilder.newDocument();
-	    Element rootElement = newDoc.createElement("parent");
-	    newDoc.appendChild(rootElement);
-	    Element rowElement = newDoc.createElement("row");
-
-	    Element curElement = newDoc.createElement("newValue");
-	    curElement.appendChild(newDoc.createTextNode("newText"));
-	    rowElement.appendChild(curElement);
-	    rootElement.appendChild(rowElement);
-	    
-	    toString(newDoc);
+		produkty.appendChild(produkt);
+		// Write to file
+		TransformerFactory tff = TransformerFactory.newInstance();
+		Transformer tf = tff.newTransformer();
+		tf.setOutputProperty(OutputKeys.INDENT, "yes");
+		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+		tf.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC,"yes");
+		DOMSource ds = new DOMSource(doc);
+		StreamResult sr = new StreamResult("Kebab.xml");
+		tf.transform(ds, sr);
 		
 	}//DONE
 
@@ -163,9 +222,11 @@ public class DOMPROJEKT {
 		NodeList nList = doc.getElementsByTagName("produkt");
 		
 	}
-	public  void main(String argv[])  throws SAXException, IOException, ParserConfigurationException{
+	
+	public static void main(String argv[])  throws SAXException, IOException, ParserConfigurationException, TransformerException{
 		DOMPROJEKT a = new DOMPROJEKT();
-		a.print();
+		a.print("Kebabownia.xml");
 		a.chooseAction();
+		a.print("Kebab.xml");
 	} 
 }
