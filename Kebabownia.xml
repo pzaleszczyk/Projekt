@@ -120,19 +120,19 @@
 		<sosy>
 			<sos>
 				<nazwa>Sos czosnkowy</nazwa>
-				<ostrosc level="0">Łagodny</ostrosc>
+				<ostrosc level="x0">*Łagodny</ostrosc>
 			</sos>
 			<sos>
 				<nazwa>Sos pomidorowy</nazwa>
-				<ostrosc level="0">Łagodny</ostrosc>
+				<ostrosc level="x0">*Łagodny</ostrosc>
 			</sos>
 			<sos>
 				<nazwa>Sos meksykański</nazwa>
-				<ostrosc level="1">Pikatny</ostrosc>
+				<ostrosc level="x1">**Pikatny</ostrosc>
 			</sos>
 			<sos>
 				<nazwa>Sos hot</nazwa>
-				<ostrosc level="2">Pikatny+</ostrosc>
+				<ostrosc level="x2">***Pikatny+</ostrosc>
 			</sos>
 		</sosy>
 		<miesa>
@@ -149,5 +149,10 @@
 				<rodzaj>Kurczak</rodzaj>
 			</mieso>
 		</miesa>
+		<zalecenia>
+			<zalecenie id="x0">*Sos nie ostry. Zalecany dla dzieci i doroslych.</zalecenie>
+			<zalecenie id="x1">**Sos ostry (5000 w skali Scoville'a). Zalecany dla osob 16+.</zalecenie>
+			<zalecenie id="x2">***Sos wyjatkowo ostry (20000 w skali Scoville'a). Dla osob 18+ ,ktore lubia wyzwania. :)</zalecenie>
+		</zalecenia>
 	</produkty>
 </kebabownia>

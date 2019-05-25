@@ -28,7 +28,7 @@ adres:before{
 	content: "Adres";
 	margin: -.75em 0px .25em -.25em;
 	padding: .1em .25em;
-	background-color: #0099ff;
+	background-color: #5da4d4;
 }
 miejscowosc:before{
 	content: "Miejscowosc: ";
@@ -44,7 +44,7 @@ adres {
 	padding: 0px 1em;
 	display: block;
 	background-color: aqua;
-	border: 2px solid #0099ff;
+	border: 2px solid #5da4d4;
 	margin-bottom: 1em;
   }
 
@@ -57,14 +57,14 @@ waluty:before{
 	content: "Płatność w:";
 	margin: -.75em 0px .25em -.25em;
 	padding: .1em .25em;
-	background-color: lime;
+	background-color: #04cdff;
 }
 waluty {
 	margin-top: 1em;
 	padding: 0px 1em;
 	display: block;
 	background-color: aqua;
-	border: 2px solid lime;
+	border: 2px solid #04cdff;
 	margin-bottom: 1em;
   }
   waluta:before{
@@ -82,13 +82,13 @@ pracownicy:before {
 	content: "Pracownicy";
 	margin: -.75em 0px .25em -.25em;
 	padding: .1em .25em;
-	background-color: purple;
+	background-color: rgb(34, 82, 187);
   }
 pracownicy {
 padding: 0px 1em;
 	table-layout: fixed;
 	border-collapse: collapse;
-	border: 2px solid purple;
+	border: 2px solid rgb(34, 82, 187);
   
 	background-color: aqua;
 	display: block;
@@ -186,13 +186,13 @@ sos{
 	background-color: white;
 }
 
-sos ostrosc[level="2"]:hover{
+sos ostrosc[level="x2"]:hover{
 	background-color:red;
 }
-sos ostrosc[level="1"]:hover{
+sos ostrosc[level="x1"]:hover{
 	background-color:orange;
 }
-sos ostrosc[level="0"]:hover{
+sos ostrosc[level="x0"]:hover{
 	background-color:lime;
 }
 
@@ -218,6 +218,23 @@ mieso{
 	margin: 1px 0 1px 0;
 	margin-bottom: 0.75em;
 	border: 1px dotted brown;
+	padding: 0px 1em;
+	background-color: white;
+}
+
+zalecenia {
+	display: inline-block;
+	margin: 2em 1em;
+	border: 1px dotted brown;
+	padding: 0px 1em;
+	background-color: white;
+  }
+zalecenie:before{
+	content: id;
+}
+zalecenie{
+	display: block;
+	margin: 1px 0 1px 0;
 	padding: 0px 1em;
 	background-color: white;
 }

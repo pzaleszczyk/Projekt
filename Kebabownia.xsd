@@ -1,18 +1,29 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="kebabownia" type="kebabowniaType">
-  
-	<xs:keyref name="moneyref" refer="moneykey">
-		<xs:selector xpath="./produkty/produkt/cena" />
-		<xs:field xpath="@waluta" />
-	</xs:keyref>
-	
-	<xs:key name="moneykey">
-		<xs:selector xpath="./lokal/waluty/waluta"/>
-		<xs:field xpath="@id" />
-	</xs:key>
-	
+
+    <xs:keyref name="moneyref" refer="moneykey">
+      <xs:selector xpath="./produkty/produkt/cena" />
+      <xs:field xpath="@waluta" />
+    </xs:keyref>
+    
+    <xs:key name="moneykey">
+      <xs:selector xpath="./lokal/waluty/waluta"/>
+      <xs:field xpath="@id" />
+    </xs:key>
+
+    <xs:keyref name="lvref" refer="lvkey">
+      <xs:selector xpath="./produkty/sosy/sos/ostrosc"/>
+      <xs:field xpath="@level" />
+    </xs:keyref>
+    
+    <xs:key name="lvkey">
+      <xs:selector xpath="./produkty/zalecenia/zalecenie" />
+      <xs:field xpath="@id" />
+    </xs:key>
+
   </xs:element>
   
+
   <xs:complexType name="adresType">
     <xs:sequence>
       <xs:element type="xs:string" name="miejscowosc"/>
@@ -66,7 +77,7 @@
   
   <xs:complexType name="cenaType">
     <xs:simpleContent>
-      <xs:extension base="xs:byte">
+      <xs:extension base="xs:string">
         <xs:attribute type="xs:string" name="waluta" use="required"/>
       </xs:extension>
     </xs:simpleContent>
@@ -114,7 +125,7 @@
   <xs:complexType name="ostroscType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute type="xs:byte" name="level" use="required"/>
+        <xs:attribute type="xs:string" name="level" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -134,7 +145,7 @@
   
   <xs:complexType name="miesoType">
     <xs:sequence>
-      <xs:element type="xs:string" name="rodzaj"/>
+      <xs:element type="xs:string" name="rodzaj" />
     </xs:sequence>
   </xs:complexType>
   
@@ -144,17 +155,33 @@
     </xs:sequence>
   </xs:complexType>
   
+
+ <xs:complexType name="zalecenieType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="zaleceniaType">
+    <xs:sequence>
+      <xs:element type="zalecenieType" name="zalecenie" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:complexType name="produktyType">
     <xs:sequence>
       <xs:element type="produktType" name="produkt" maxOccurs="unbounded" minOccurs="1"/>
       <xs:element type="sosyType" name="sosy" maxOccurs="unbounded" minOccurs="1"/>
       <xs:element type="miesaType" name="miesa" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element type="zaleceniaType" name="zalecenia" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   
   <xs:complexType name="kebabowniaType">
     <xs:sequence>
-      <xs:element type="lokalType" name="lokal" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="lokalType" name="lokal" maxOccurs="unbounded" minOccurs="1"/>
       <xs:element type="produktyType" name="produkty"/>
     </xs:sequence>
   </xs:complexType>

@@ -4,8 +4,9 @@
 
 
 <!ELEMENT lokal 	(adres, waluty+, pracownicy+)>
-<!ELEMENT produkty 	(produkt+, sosy+, miesa+)>
+<!ELEMENT produkty 	(produkt+, sosy, miesa, zalecenia)>
 
+<!ELEMENT zalecenia (zalecenie*)>
 <!ELEMENT waluty	(waluta+)>
 <!ELEMENT adres		(miejscowosc, ulica, numer_budynku)>
 <!ELEMENT pracownicy (pracownik+)>
@@ -25,12 +26,15 @@
 <!ATTLIST cena waluta IDREF #REQUIRED>
 <!ATTLIST waluta id ID #IMPLIED>
 
+<!ATTLIST ostrosc level IDREF #REQUIRED>
+<!ATTLIST zalecenie id ID #IMPLIED>
+
 <!ATTLIST ilosc jednostka (kg|g|dag|ml|l) #REQUIRED>
-<!ATTLIST ostrosc level CDATA #REQUIRED>
+<!-- <!ATTLIST ostrosc level CDATA #REQUIRED> -->
 
 <!ELEMENT miejscowosc		(#PCDATA)>
 <!ELEMENT ulica				(#PCDATA)>
-<!ELEMENT numer_budynku	(#PCDATA)>
+<!ELEMENT numer_budynku	    (#PCDATA)>
 <!ELEMENT imie				(#PCDATA)>
 <!ELEMENT nazwisko			(#PCDATA)>
 <!ELEMENT pozycja			(#PCDATA)>
@@ -40,3 +44,4 @@
 <!ELEMENT rodzaj			(#PCDATA)>
 <!ELEMENT ostrosc			(#PCDATA)>
 <!ELEMENT waluta			(#PCDATA)>
+<!ELEMENT zalecenie         (#PCDATA)>
