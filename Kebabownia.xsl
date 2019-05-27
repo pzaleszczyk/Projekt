@@ -43,7 +43,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <td>
             <ol>
                 <xsl:for-each select="skladniki/skladnik">
-                <xsl:sort select="ilosc" data-type="number" order="descending"/>
+                <xsl:sort select="ilosc" data-type="number" order="descending"/> 
                     <li>
                         <xsl:value-of select="nazwa"/>&#160;
                         <xsl:choose>
@@ -53,7 +53,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             <xsl:when test="ilosc/@jednostka='l'">
                                 <xsl:value-of select="ilosc*1000"/>&#160;
                             </xsl:when>
-                            <xsl:otherwise>
+                            <xsl:otherwise> 
                                 <xsl:value-of select="ilosc"/>&#160;
                             </xsl:otherwise>
                         </xsl:choose>
@@ -67,6 +67,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             </xsl:otherwise>
                         </xsl:choose>
                     </li>
+                    
                 </xsl:for-each>
             </ol>
             </td>
@@ -77,4 +78,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   </body>
   </html>
 </xsl:template>
+
+
 </xsl:stylesheet>

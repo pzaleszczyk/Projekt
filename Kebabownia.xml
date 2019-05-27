@@ -112,7 +112,7 @@
 				</skladnik>
 				<skladnik>
 					<nazwa>Surówki</nazwa>
-					<ilosc jednostka="g">500</ilosc>
+					<ilosc jednostka="kg">0.5</ilosc>
 				</skladnik>
 			</skladniki>
 		</produkt>
