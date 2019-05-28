@@ -245,11 +245,11 @@ public class DOMPROJEKT {
 		Element produkt = doc.createElement("produkt");
 		//Nazwa
 		Element nazwa = doc.createElement("nazwa");
-		nazwa.appendChild(doc.createTextNode("Test1"));
+		nazwa.appendChild(doc.createTextNode(innazwa));
 		produkt.appendChild(nazwa);
 		//Cena
 		Element cena = doc.createElement("cena");
-		cena.appendChild(doc.createTextNode("Test2"));
+		cena.appendChild(doc.createTextNode(incena));
 		cena.setAttribute("waluta", "pln");
 		produkt.appendChild(cena);
 		//Skladniki
@@ -305,7 +305,7 @@ public class DOMPROJEKT {
 		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 		tf.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC,"yes");
 		DOMSource ds = new DOMSource(doc);
-		StreamResult sr = new StreamResult("KebabUpdate.xml");
+		StreamResult sr = new StreamResult("KebabDelete.xml");
 		tf.transform(ds, sr);
 	}
 
